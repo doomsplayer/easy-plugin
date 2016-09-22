@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["arguments","Arguments."],["extractor","Functions for extracting the values in AST entities."],["specification","Argument specifications."]],"type":[["PluginResult","A result type for reporting errors in plugins."]]});

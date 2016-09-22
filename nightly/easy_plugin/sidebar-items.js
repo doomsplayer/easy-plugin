@@ -1,0 +1,1 @@
+initSidebarItems({"mod":[["extractor","Functions for extracting the values in AST entities."]],"trait":[["PluginResultExt","Extends `PluginResult<T>`."],["ToError","A type that can be extended into a `PluginResult<T>`."]],"type":[["PluginResult",""]]});

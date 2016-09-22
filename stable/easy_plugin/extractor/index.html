@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `extractor` mod in crate `easy_plugin`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, extractor">
+
+    <title>easy_plugin::extractor - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='../index.html'>easy_plugin</a></p><script>window.sidebarCurrent = {name: 'extractor', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Module <a href='../index.html'>easy_plugin</a>::<wbr><a class='mod' href=''>extractor</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-535' class='srclink' href='../../easy_plugin_parsers/extractor/index.html?gotosrc=535' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>Functions for extracting the values in AST entities.</p>
+</div><h2 id='functions' class='section-header'><a href="#functions">Functions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.attr_to_list.html'
+                                  title='easy_plugin::extractor::attr_to_list'>attr_to_list</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>MetaItemKind::List</code> values in the supplied <code>Attribute</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.attr_to_name_value.html'
+                                  title='easy_plugin::extractor::attr_to_name_value'>attr_to_name_value</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>MetaItemKind::NameValue</code> values in the supplied <code>Attribute</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.attr_to_word.html'
+                                  title='easy_plugin::extractor::attr_to_word'>attr_to_word</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>MetaItemKind::Word</code> value in the supplied <code>Attribute</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_addr_of.html'
+                                  title='easy_plugin::extractor::expr_to_addr_of'>expr_to_addr_of</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::AddrOf</code> values in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_assign.html'
+                                  title='easy_plugin::extractor::expr_to_assign'>expr_to_assign</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::Assign</code> values in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_assign_op.html'
+                                  title='easy_plugin::extractor::expr_to_assign_op'>expr_to_assign_op</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::AssignOp</code> values in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_binary.html'
+                                  title='easy_plugin::extractor::expr_to_binary'>expr_to_binary</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::Binary</code> values in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_block.html'
+                                  title='easy_plugin::extractor::expr_to_block'>expr_to_block</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::Block</code> value in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_box.html'
+                                  title='easy_plugin::extractor::expr_to_box'>expr_to_box</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::Box</code> value in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_break.html'
+                                  title='easy_plugin::extractor::expr_to_break'>expr_to_break</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::Break</code> value in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_call.html'
+                                  title='easy_plugin::extractor::expr_to_call'>expr_to_call</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::Call</code> values in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_cast.html'
+                                  title='easy_plugin::extractor::expr_to_cast'>expr_to_cast</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::Cast</code> values in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_closure.html'
+                                  title='easy_plugin::extractor::expr_to_closure'>expr_to_closure</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::Closure</code> values in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_continue.html'
+                                  title='easy_plugin::extractor::expr_to_continue'>expr_to_continue</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::Continue</code> value in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_field.html'
+                                  title='easy_plugin::extractor::expr_to_field'>expr_to_field</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::Field</code> values in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_for_loop.html'
+                                  title='easy_plugin::extractor::expr_to_for_loop'>expr_to_for_loop</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::ForLoop</code> values in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_if.html'
+                                  title='easy_plugin::extractor::expr_to_if'>expr_to_if</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::If</code> values in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_if_let.html'
+                                  title='easy_plugin::extractor::expr_to_if_let'>expr_to_if_let</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::IfLet</code> values in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_in_place.html'
+                                  title='easy_plugin::extractor::expr_to_in_place'>expr_to_in_place</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::InPlace</code> values in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_index.html'
+                                  title='easy_plugin::extractor::expr_to_index'>expr_to_index</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::Index</code> values in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_inline_asm.html'
+                                  title='easy_plugin::extractor::expr_to_inline_asm'>expr_to_inline_asm</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::InlineAsm</code> value in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_lit.html'
+                                  title='easy_plugin::extractor::expr_to_lit'>expr_to_lit</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::Lit</code> value in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_loop.html'
+                                  title='easy_plugin::extractor::expr_to_loop'>expr_to_loop</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::Loop</code> values in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_mac.html'
+                                  title='easy_plugin::extractor::expr_to_mac'>expr_to_mac</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::Mac</code> value in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_match.html'
+                                  title='easy_plugin::extractor::expr_to_match'>expr_to_match</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::Match</code> values in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_method_call.html'
+                                  title='easy_plugin::extractor::expr_to_method_call'>expr_to_method_call</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::MethodCall</code> values in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_paren.html'
+                                  title='easy_plugin::extractor::expr_to_paren'>expr_to_paren</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::Paren</code> value in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_path.html'
+                                  title='easy_plugin::extractor::expr_to_path'>expr_to_path</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::Path</code> values in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_range.html'
+                                  title='easy_plugin::extractor::expr_to_range'>expr_to_range</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::Range</code> values in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_repeat.html'
+                                  title='easy_plugin::extractor::expr_to_repeat'>expr_to_repeat</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::Repeat</code> values in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_ret.html'
+                                  title='easy_plugin::extractor::expr_to_ret'>expr_to_ret</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::Ret</code> value in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_struct.html'
+                                  title='easy_plugin::extractor::expr_to_struct'>expr_to_struct</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::Struct</code> values in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_try.html'
+                                  title='easy_plugin::extractor::expr_to_try'>expr_to_try</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::Try</code> value in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_tup.html'
+                                  title='easy_plugin::extractor::expr_to_tup'>expr_to_tup</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::Tup</code> value in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_tup_field.html'
+                                  title='easy_plugin::extractor::expr_to_tup_field'>expr_to_tup_field</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::TupField</code> values in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_type.html'
+                                  title='easy_plugin::extractor::expr_to_type'>expr_to_type</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::Type</code> values in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_unary.html'
+                                  title='easy_plugin::extractor::expr_to_unary'>expr_to_unary</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::Unary</code> values in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_vec.html'
+                                  title='easy_plugin::extractor::expr_to_vec'>expr_to_vec</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::Vec</code> value in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_while.html'
+                                  title='easy_plugin::extractor::expr_to_while'>expr_to_while</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::While</code> values in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.expr_to_while_let.html'
+                                  title='easy_plugin::extractor::expr_to_while_let'>expr_to_while_let</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ExprKind::WhileLet</code> values in the supplied <code>Expr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.item_to_const.html'
+                                  title='easy_plugin::extractor::item_to_const'>item_to_const</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ItemKind::Const</code> values in the supplied <code>Item</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.item_to_default_impl.html'
+                                  title='easy_plugin::extractor::item_to_default_impl'>item_to_default_impl</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ItemKind::DefaultImpl</code> values in the supplied <code>Item</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.item_to_enum.html'
+                                  title='easy_plugin::extractor::item_to_enum'>item_to_enum</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ItemKind::Enum</code> values in the supplied <code>Item</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.item_to_extern_crate.html'
+                                  title='easy_plugin::extractor::item_to_extern_crate'>item_to_extern_crate</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ItemKind::ExternCrate</code> value in the supplied <code>Item</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.item_to_fn.html'
+                                  title='easy_plugin::extractor::item_to_fn'>item_to_fn</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ItemKind::Fn</code> values in the supplied <code>Item</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.item_to_foreign_mod.html'
+                                  title='easy_plugin::extractor::item_to_foreign_mod'>item_to_foreign_mod</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ItemKind::ForeignMod</code> value in the supplied <code>Item</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.item_to_impl.html'
+                                  title='easy_plugin::extractor::item_to_impl'>item_to_impl</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ItemKind::Impl</code> values in the supplied <code>Item</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.item_to_mac.html'
+                                  title='easy_plugin::extractor::item_to_mac'>item_to_mac</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ItemKind::Mac</code> value in the supplied <code>Item</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.item_to_mod.html'
+                                  title='easy_plugin::extractor::item_to_mod'>item_to_mod</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ItemKind::Mod</code> value in the supplied <code>Item</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.item_to_static.html'
+                                  title='easy_plugin::extractor::item_to_static'>item_to_static</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ItemKind::Static</code> values in the supplied <code>Item</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.item_to_struct.html'
+                                  title='easy_plugin::extractor::item_to_struct'>item_to_struct</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ItemKind::Struct</code> values in the supplied <code>Item</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.item_to_trait.html'
+                                  title='easy_plugin::extractor::item_to_trait'>item_to_trait</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ItemKind::Trait</code> values in the supplied <code>Item</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.item_to_ty.html'
+                                  title='easy_plugin::extractor::item_to_ty'>item_to_ty</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ItemKind::Ty</code> values in the supplied <code>Item</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.item_to_union.html'
+                                  title='easy_plugin::extractor::item_to_union'>item_to_union</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ItemKind::Union</code> values in the supplied <code>Item</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.item_to_use.html'
+                                  title='easy_plugin::extractor::item_to_use'>item_to_use</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>ItemKind::Use</code> value in the supplied <code>Item</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.lit_to_bool.html'
+                                  title='easy_plugin::extractor::lit_to_bool'>lit_to_bool</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>LitKind::Bool</code> value in the supplied <code>Lit</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.lit_to_byte.html'
+                                  title='easy_plugin::extractor::lit_to_byte'>lit_to_byte</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>LitKind::Byte</code> value in the supplied <code>Lit</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.lit_to_byte_str.html'
+                                  title='easy_plugin::extractor::lit_to_byte_str'>lit_to_byte_str</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>LitKind::ByteStr</code> value in the supplied <code>Lit</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.lit_to_char.html'
+                                  title='easy_plugin::extractor::lit_to_char'>lit_to_char</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>LitKind::Char</code> value in the supplied <code>Lit</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.lit_to_float.html'
+                                  title='easy_plugin::extractor::lit_to_float'>lit_to_float</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>LitKind::Float</code> values in the supplied <code>Lit</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.lit_to_float_unsuffixed.html'
+                                  title='easy_plugin::extractor::lit_to_float_unsuffixed'>lit_to_float_unsuffixed</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>LitKind::FloatUnsuffixed</code> value in the supplied <code>Lit</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.lit_to_int.html'
+                                  title='easy_plugin::extractor::lit_to_int'>lit_to_int</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>LitKind::Int</code> values in the supplied <code>Lit</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.lit_to_str.html'
+                                  title='easy_plugin::extractor::lit_to_str'>lit_to_str</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>LitKind::Str</code> values in the supplied <code>Lit</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.meta_to_list.html'
+                                  title='easy_plugin::extractor::meta_to_list'>meta_to_list</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>MetaItemKind::List</code> values in the supplied <code>MetaItem</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.meta_to_name_value.html'
+                                  title='easy_plugin::extractor::meta_to_name_value'>meta_to_name_value</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>MetaItemKind::NameValue</code> values in the supplied <code>MetaItem</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.meta_to_word.html'
+                                  title='easy_plugin::extractor::meta_to_word'>meta_to_word</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>MetaItemKind::Word</code> value in the supplied <code>MetaItem</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.pat_to_box.html'
+                                  title='easy_plugin::extractor::pat_to_box'>pat_to_box</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>PatKind::Box</code> value in the supplied <code>Pat</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.pat_to_ident.html'
+                                  title='easy_plugin::extractor::pat_to_ident'>pat_to_ident</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>PatKind::Ident</code> values in the supplied <code>Pat</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.pat_to_lit.html'
+                                  title='easy_plugin::extractor::pat_to_lit'>pat_to_lit</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>PatKind::Lit</code> value in the supplied <code>Pat</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.pat_to_mac.html'
+                                  title='easy_plugin::extractor::pat_to_mac'>pat_to_mac</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>PatKind::Mac</code> value in the supplied <code>Pat</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.pat_to_path.html'
+                                  title='easy_plugin::extractor::pat_to_path'>pat_to_path</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>PatKind::Path</code> values in the supplied <code>Pat</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.pat_to_range.html'
+                                  title='easy_plugin::extractor::pat_to_range'>pat_to_range</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>PatKind::Range</code> values in the supplied <code>Pat</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.pat_to_ref.html'
+                                  title='easy_plugin::extractor::pat_to_ref'>pat_to_ref</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>PatKind::Ref</code> values in the supplied <code>Pat</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.pat_to_struct.html'
+                                  title='easy_plugin::extractor::pat_to_struct'>pat_to_struct</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>PatKind::Struct</code> values in the supplied <code>Pat</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.pat_to_tuple.html'
+                                  title='easy_plugin::extractor::pat_to_tuple'>pat_to_tuple</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>PatKind::Tuple</code> values in the supplied <code>Pat</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.pat_to_tuple_struct.html'
+                                  title='easy_plugin::extractor::pat_to_tuple_struct'>pat_to_tuple_struct</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>PatKind::TupleStruct</code> values in the supplied <code>Pat</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.pat_to_vec.html'
+                                  title='easy_plugin::extractor::pat_to_vec'>pat_to_vec</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>PatKind::Vec</code> values in the supplied <code>Pat</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.pat_to_wild.html'
+                                  title='easy_plugin::extractor::pat_to_wild'>pat_to_wild</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Pat</code> is <code>Pat::Wild</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.stmt_to_expr.html'
+                                  title='easy_plugin::extractor::stmt_to_expr'>stmt_to_expr</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>StmtKind::Expr</code> value in the supplied <code>Stmt</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.stmt_to_item.html'
+                                  title='easy_plugin::extractor::stmt_to_item'>stmt_to_item</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>StmtKind::Item</code> value in the supplied <code>Stmt</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.stmt_to_local.html'
+                                  title='easy_plugin::extractor::stmt_to_local'>stmt_to_local</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>StmtKind::Local</code> value in the supplied <code>Stmt</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.stmt_to_mac.html'
+                                  title='easy_plugin::extractor::stmt_to_mac'>stmt_to_mac</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>StmtKind::Mac</code> value in the supplied <code>Stmt</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.stmt_to_semi.html'
+                                  title='easy_plugin::extractor::stmt_to_semi'>stmt_to_semi</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>StmtKind::Semi</code> value in the supplied <code>Stmt</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_and_and.html'
+                                  title='easy_plugin::extractor::tok_to_and_and'>tok_to_and_and</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Spanned&lt;Token&gt;</code> is <code>Spanned&lt;Token&gt;::AndAnd</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_at.html'
+                                  title='easy_plugin::extractor::tok_to_at'>tok_to_at</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Spanned&lt;Token&gt;</code> is <code>Spanned&lt;Token&gt;::At</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_bin_op.html'
+                                  title='easy_plugin::extractor::tok_to_bin_op'>tok_to_bin_op</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>Token::BinOp</code> value in the supplied <code>Spanned&lt;Token&gt;</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_bin_op_eq.html'
+                                  title='easy_plugin::extractor::tok_to_bin_op_eq'>tok_to_bin_op_eq</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>Token::BinOpEq</code> value in the supplied <code>Spanned&lt;Token&gt;</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_close_delim.html'
+                                  title='easy_plugin::extractor::tok_to_close_delim'>tok_to_close_delim</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>Token::CloseDelim</code> value in the supplied <code>Spanned&lt;Token&gt;</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_colon.html'
+                                  title='easy_plugin::extractor::tok_to_colon'>tok_to_colon</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Spanned&lt;Token&gt;</code> is <code>Spanned&lt;Token&gt;::Colon</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_comma.html'
+                                  title='easy_plugin::extractor::tok_to_comma'>tok_to_comma</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Spanned&lt;Token&gt;</code> is <code>Spanned&lt;Token&gt;::Comma</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_comment.html'
+                                  title='easy_plugin::extractor::tok_to_comment'>tok_to_comment</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Spanned&lt;Token&gt;</code> is <code>Spanned&lt;Token&gt;::Comment</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_doc_comment.html'
+                                  title='easy_plugin::extractor::tok_to_doc_comment'>tok_to_doc_comment</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>Token::DocComment</code> value in the supplied <code>Spanned&lt;Token&gt;</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_dollar.html'
+                                  title='easy_plugin::extractor::tok_to_dollar'>tok_to_dollar</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Spanned&lt;Token&gt;</code> is <code>Spanned&lt;Token&gt;::Dollar</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_dot.html'
+                                  title='easy_plugin::extractor::tok_to_dot'>tok_to_dot</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Spanned&lt;Token&gt;</code> is <code>Spanned&lt;Token&gt;::Dot</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_dot_dot.html'
+                                  title='easy_plugin::extractor::tok_to_dot_dot'>tok_to_dot_dot</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Spanned&lt;Token&gt;</code> is <code>Spanned&lt;Token&gt;::DotDot</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_dot_dot_dot.html'
+                                  title='easy_plugin::extractor::tok_to_dot_dot_dot'>tok_to_dot_dot_dot</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Spanned&lt;Token&gt;</code> is <code>Spanned&lt;Token&gt;::DotDotDot</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_eof.html'
+                                  title='easy_plugin::extractor::tok_to_eof'>tok_to_eof</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Spanned&lt;Token&gt;</code> is <code>Spanned&lt;Token&gt;::Eof</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_eq.html'
+                                  title='easy_plugin::extractor::tok_to_eq'>tok_to_eq</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Spanned&lt;Token&gt;</code> is <code>Spanned&lt;Token&gt;::Eq</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_eq_eq.html'
+                                  title='easy_plugin::extractor::tok_to_eq_eq'>tok_to_eq_eq</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Spanned&lt;Token&gt;</code> is <code>Spanned&lt;Token&gt;::EqEq</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_fat_arrow.html'
+                                  title='easy_plugin::extractor::tok_to_fat_arrow'>tok_to_fat_arrow</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Spanned&lt;Token&gt;</code> is <code>Spanned&lt;Token&gt;::FatArrow</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_ge.html'
+                                  title='easy_plugin::extractor::tok_to_ge'>tok_to_ge</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Spanned&lt;Token&gt;</code> is <code>Spanned&lt;Token&gt;::Ge</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_gt.html'
+                                  title='easy_plugin::extractor::tok_to_gt'>tok_to_gt</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Spanned&lt;Token&gt;</code> is <code>Spanned&lt;Token&gt;::Gt</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_ident.html'
+                                  title='easy_plugin::extractor::tok_to_ident'>tok_to_ident</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>Token::Ident</code> value in the supplied <code>Spanned&lt;Token&gt;</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_interpolated.html'
+                                  title='easy_plugin::extractor::tok_to_interpolated'>tok_to_interpolated</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>Token::Interpolated</code> value in the supplied <code>Spanned&lt;Token&gt;</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_l_arrow.html'
+                                  title='easy_plugin::extractor::tok_to_l_arrow'>tok_to_l_arrow</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Spanned&lt;Token&gt;</code> is <code>Spanned&lt;Token&gt;::LArrow</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_le.html'
+                                  title='easy_plugin::extractor::tok_to_le'>tok_to_le</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Spanned&lt;Token&gt;</code> is <code>Spanned&lt;Token&gt;::Le</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_lifetime.html'
+                                  title='easy_plugin::extractor::tok_to_lifetime'>tok_to_lifetime</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>Token::Lifetime</code> value in the supplied <code>Spanned&lt;Token&gt;</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_literal.html'
+                                  title='easy_plugin::extractor::tok_to_literal'>tok_to_literal</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>Token::Literal</code> values in the supplied <code>Spanned&lt;Token&gt;</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_lt.html'
+                                  title='easy_plugin::extractor::tok_to_lt'>tok_to_lt</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Spanned&lt;Token&gt;</code> is <code>Spanned&lt;Token&gt;::Lt</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_match_nt.html'
+                                  title='easy_plugin::extractor::tok_to_match_nt'>tok_to_match_nt</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>Token::MatchNt</code> values in the supplied <code>Spanned&lt;Token&gt;</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_mod_sep.html'
+                                  title='easy_plugin::extractor::tok_to_mod_sep'>tok_to_mod_sep</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Spanned&lt;Token&gt;</code> is <code>Spanned&lt;Token&gt;::ModSep</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_ne.html'
+                                  title='easy_plugin::extractor::tok_to_ne'>tok_to_ne</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Spanned&lt;Token&gt;</code> is <code>Spanned&lt;Token&gt;::Ne</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_not.html'
+                                  title='easy_plugin::extractor::tok_to_not'>tok_to_not</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Spanned&lt;Token&gt;</code> is <code>Spanned&lt;Token&gt;::Not</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_open_delim.html'
+                                  title='easy_plugin::extractor::tok_to_open_delim'>tok_to_open_delim</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>Token::OpenDelim</code> value in the supplied <code>Spanned&lt;Token&gt;</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_or_or.html'
+                                  title='easy_plugin::extractor::tok_to_or_or'>tok_to_or_or</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Spanned&lt;Token&gt;</code> is <code>Spanned&lt;Token&gt;::OrOr</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_pound.html'
+                                  title='easy_plugin::extractor::tok_to_pound'>tok_to_pound</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Spanned&lt;Token&gt;</code> is <code>Spanned&lt;Token&gt;::Pound</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_question.html'
+                                  title='easy_plugin::extractor::tok_to_question'>tok_to_question</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Spanned&lt;Token&gt;</code> is <code>Spanned&lt;Token&gt;::Question</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_r_arrow.html'
+                                  title='easy_plugin::extractor::tok_to_r_arrow'>tok_to_r_arrow</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Spanned&lt;Token&gt;</code> is <code>Spanned&lt;Token&gt;::RArrow</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_semi.html'
+                                  title='easy_plugin::extractor::tok_to_semi'>tok_to_semi</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Spanned&lt;Token&gt;</code> is <code>Spanned&lt;Token&gt;::Semi</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_shebang.html'
+                                  title='easy_plugin::extractor::tok_to_shebang'>tok_to_shebang</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>Token::Shebang</code> value in the supplied <code>Spanned&lt;Token&gt;</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_special_var_nt.html'
+                                  title='easy_plugin::extractor::tok_to_special_var_nt'>tok_to_special_var_nt</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>Token::SpecialVarNt</code> value in the supplied <code>Spanned&lt;Token&gt;</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_subst_nt.html'
+                                  title='easy_plugin::extractor::tok_to_subst_nt'>tok_to_subst_nt</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>Token::SubstNt</code> value in the supplied <code>Spanned&lt;Token&gt;</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_tilde.html'
+                                  title='easy_plugin::extractor::tok_to_tilde'>tok_to_tilde</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Spanned&lt;Token&gt;</code> is <code>Spanned&lt;Token&gt;::Tilde</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_underscore.html'
+                                  title='easy_plugin::extractor::tok_to_underscore'>tok_to_underscore</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Spanned&lt;Token&gt;</code> is <code>Spanned&lt;Token&gt;::Underscore</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tok_to_whitespace.html'
+                                  title='easy_plugin::extractor::tok_to_whitespace'>tok_to_whitespace</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Spanned&lt;Token&gt;</code> is <code>Spanned&lt;Token&gt;::Whitespace</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tt_to_delimited.html'
+                                  title='easy_plugin::extractor::tt_to_delimited'>tt_to_delimited</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>TokenTree::Delimited</code> value in the supplied <code>TokenTree</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tt_to_sequence.html'
+                                  title='easy_plugin::extractor::tt_to_sequence'>tt_to_sequence</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>TokenTree::Sequence</code> value in the supplied <code>TokenTree</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.tt_to_token.html'
+                                  title='easy_plugin::extractor::tt_to_token'>tt_to_token</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>TokenTree::Token</code> value in the supplied <code>TokenTree</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.ty_to_bare_fn.html'
+                                  title='easy_plugin::extractor::ty_to_bare_fn'>ty_to_bare_fn</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>TyKind::BareFn</code> value in the supplied <code>Ty</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.ty_to_fixed_length_vec.html'
+                                  title='easy_plugin::extractor::ty_to_fixed_length_vec'>ty_to_fixed_length_vec</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>TyKind::FixedLengthVec</code> values in the supplied <code>Ty</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.ty_to_impl_trait.html'
+                                  title='easy_plugin::extractor::ty_to_impl_trait'>ty_to_impl_trait</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>TyKind::ImplTrait</code> value in the supplied <code>Ty</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.ty_to_implicit_self.html'
+                                  title='easy_plugin::extractor::ty_to_implicit_self'>ty_to_implicit_self</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Ty</code> is <code>Ty::ImplicitSelf</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.ty_to_infer.html'
+                                  title='easy_plugin::extractor::ty_to_infer'>ty_to_infer</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Ty</code> is <code>Ty::Infer</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.ty_to_mac.html'
+                                  title='easy_plugin::extractor::ty_to_mac'>ty_to_mac</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>TyKind::Mac</code> value in the supplied <code>Ty</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.ty_to_never.html'
+                                  title='easy_plugin::extractor::ty_to_never'>ty_to_never</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns <code>Ok</code> if the supplied <code>Ty</code> is <code>Ty::Never</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.ty_to_object_sum.html'
+                                  title='easy_plugin::extractor::ty_to_object_sum'>ty_to_object_sum</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>TyKind::ObjectSum</code> values in the supplied <code>Ty</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.ty_to_paren.html'
+                                  title='easy_plugin::extractor::ty_to_paren'>ty_to_paren</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>TyKind::Paren</code> value in the supplied <code>Ty</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.ty_to_path.html'
+                                  title='easy_plugin::extractor::ty_to_path'>ty_to_path</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>TyKind::Path</code> values in the supplied <code>Ty</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.ty_to_poly_trait_ref.html'
+                                  title='easy_plugin::extractor::ty_to_poly_trait_ref'>ty_to_poly_trait_ref</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>TyKind::PolyTraitRef</code> value in the supplied <code>Ty</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.ty_to_ptr.html'
+                                  title='easy_plugin::extractor::ty_to_ptr'>ty_to_ptr</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>TyKind::Ptr</code> value in the supplied <code>Ty</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.ty_to_rptr.html'
+                                  title='easy_plugin::extractor::ty_to_rptr'>ty_to_rptr</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>TyKind::Rptr</code> values in the supplied <code>Ty</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.ty_to_tup.html'
+                                  title='easy_plugin::extractor::ty_to_tup'>ty_to_tup</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>TyKind::Tup</code> value in the supplied <code>Ty</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.ty_to_typeof.html'
+                                  title='easy_plugin::extractor::ty_to_typeof'>ty_to_typeof</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>TyKind::Typeof</code> value in the supplied <code>Ty</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='fn' href='fn.ty_to_vec.html'
+                                  title='easy_plugin::extractor::ty_to_vec'>ty_to_vec</a></td>
+                           <td class='docblock-short'>
+                                <p>Returns the <code>TyKind::Vec</code> value in the supplied <code>Ty</code>.</p>
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../../";
+        window.currentCrate = "easy_plugin";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../../jquery.js"></script>
+    <script src="../../main.js"></script>
+    
+    <script defer src="../../search-index.js"></script>
+</body>
+</html>

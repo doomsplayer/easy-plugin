@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["parse_arguments","Parses the supplied arguments with the supplied argument specification."]],"struct":[["Arguments","A set of parsed arguments."],["EnumArguments","A set of parsed arguments found in an enum."],["SequenceArguments","A set of parsed arguments found in a sequence."]]});

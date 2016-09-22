@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `easy_plugin` crate.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, easy_plugin">
+
+    <title>easy_plugin - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+    
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'></p><script>window.sidebarCurrent = {name: 'easy_plugin', ty: 'mod', relpath: '../'};</script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content mod">
+<h1 class='fqn'><span class='in-band'>Crate <a class='mod' href=''>easy_plugin</a></span><span class='out-of-band'><span id='render-detail'>
+                   <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                       [<span class='inner'>&#x2212;</span>]
+                   </a>
+               </span><a id='src-0' class='srclink' href='../src/easy_plugin/src/lib.rs.html#15-215' title='goto source code'>[src]</a></span></h1>
+<div class='docblock'><p>This crate provides a compiler plugin, <code>easy_plugin!</code>, which makes it easier to write compiler
+plugins.</p>
+
+<p><code>easy_plugin!</code> generates a wrapper function around your plugin function which handles argument
+parsing and error reporting for you, significantly reducing the time it takes to write a plugin.</p>
+
+<p>First, here is a trivial example.</p>
+
+<pre class='rust rust-example-rendered'>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>feature</span>(<span class='ident'>plugin</span>, <span class='ident'>plugin_registrar</span>, <span class='ident'>rustc_private</span>)]</span>
+<span class='attribute'>#<span class='op'>!</span>[<span class='ident'>plugin</span>(<span class='ident'>easy_plugin</span>)]</span>
+
+<span class='attribute'>#[<span class='ident'>allow</span>(<span class='ident'>plugin_as_library</span>)]</span>
+<span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>easy_plugin</span>;
+
+<span class='kw'>use</span> <span class='ident'>easy_plugin</span>::{<span class='ident'>PluginResult</span>};
+
+<span class='comment'>// rustc_plugin and syntax imports...</span>
+
+<span class='macro'>easy_plugin</span><span class='macro'>!</span> {
+    <span class='kw'>struct</span> <span class='ident'>Arguments</span> { <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>a</span>:<span class='ident'>ident</span> }
+
+    <span class='doccomment'>/// My plugin.</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>expand_plugin</span>(
+        <span class='ident'>context</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>ExtCtxt</span>, <span class='ident'>span</span>: <span class='ident'>Span</span>, <span class='ident'>arguments</span>: <span class='ident'>Arguments</span>
+    ) <span class='op'>-&gt;</span> <span class='ident'>PluginResult</span><span class='op'>&lt;</span><span class='ident'>Box</span><span class='op'>&lt;</span><span class='ident'>MacResult</span><span class='op'>&gt;&gt;</span> {
+        <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{:?}&quot;</span>, <span class='ident'>arguments</span>.<span class='ident'>a</span>);
+        <span class='prelude-val'>Ok</span>(<span class='ident'>DummyResult</span>::<span class='ident'>any</span>(<span class='ident'>span</span>))
+    }
+}
+
+<span class='attribute'>#[<span class='ident'>plugin_registrar</span>]</span>
+<span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>plugin_registrar</span>(<span class='ident'>registry</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>Registry</span>) {
+    <span class='ident'>registry</span>.<span class='ident'>register_macro</span>(<span class='string'>&quot;plugin&quot;</span>, <span class='ident'>expand_plugin</span>);
+}<a class='test-arrow' target='_blank' href=''>Run</a></pre>
+
+<p>In this example, note that the arguments of the plugin function <code>expand_plugin</code> differ from a
+typical plugin function in that the last argument is of type <code>Arguments</code> rather than
+<code>&amp;[TokenTree]</code>. This is because the generated wrapper function handles argument parsing for you.
+The definition of the <code>Arguments</code> struct above <code>expand_plugin</code> provides the argument
+specification and the generated wrapper function parses the arguments and stores them in an
+instance of <code>Arguments</code>.</p>
+
+<p>In this example, the argument specification consists of <code>$a:ident</code>, which means that the only
+argument this plugin will accept is a single identifier which will be stored in a field named
+<code>a</code> in the <code>Arguments</code> struct. For more information on argument specifications, see the relevant
+section <a href="#specifications">below</a>.</p>
+
+<p>If the arguments do not match the argument specification or your plugin function returns <code>Err</code>,
+the wrapper function will report an error with <code>ExtCtxt::span_err</code> for you.</p>
+
+<p>Note that the <code>expand_plugin</code> function is public and has a documentation comment. The visibility
+and attributes applied to your plugin function (including documentation comments) will be
+applied to the wrapper function. In this example, the wrapper function will be public and have
+a documentation comment.</p>
+
+<h1 id='specifications' class='section-header'><a href='#specifications'>Specifications</a></h1>
+<p>Plugin argument specifications are very similar to the argument specifications you are used to
+writing for macros. There are two primary differences: no restrictions on ordering and
+additional types of named specifiers.</p>
+
+<table>
+<thead>
+<tr>
+<th style="text-align: left">Name</th>
+<th style="text-align: left">Description</th>
+<th style="text-align: left">Storage Type</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td style="text-align: left"><code>attr</code></td>
+<td style="text-align: left">An attribute.</td>
+<td style="text-align: left"><code>Attribute</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code>binop</code></td>
+<td style="text-align: left">A binary operator.</td>
+<td style="text-align: left"><code>Spanned&lt;BinOpToken&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code>block</code></td>
+<td style="text-align: left">A brace-delimited statement sequence.</td>
+<td style="text-align: left"><code>P&lt;Block&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code>delim</code></td>
+<td style="text-align: left">A delimited token tree sequence.</td>
+<td style="text-align: left"><code>Spanned&lt;Delimited&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code>expr</code></td>
+<td style="text-align: left">An expression.</td>
+<td style="text-align: left"><code>P&lt;Expr&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code>ident</code></td>
+<td style="text-align: left">An identifier.</td>
+<td style="text-align: left"><code>Spanned&lt;Ident&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code>item</code></td>
+<td style="text-align: left">An item.</td>
+<td style="text-align: left"><code>P&lt;Item&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code>lftm</code></td>
+<td style="text-align: left">A lifetime.</td>
+<td style="text-align: left"><code>Spanned&lt;Name&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code>lit</code></td>
+<td style="text-align: left">A literal.</td>
+<td style="text-align: left"><code>Lit</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code>meta</code></td>
+<td style="text-align: left">A &quot;meta&quot; item, as found in attributes.</td>
+<td style="text-align: left"><code>P&lt;MetaItem&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code>pat</code></td>
+<td style="text-align: left">A pattern.</td>
+<td style="text-align: left"><code>P&lt;Pat&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code>path</code></td>
+<td style="text-align: left">A qualified name.</td>
+<td style="text-align: left"><code>Path</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code>stmt</code></td>
+<td style="text-align: left">A single statement.</td>
+<td style="text-align: left"><code>Stmt</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code>ty</code></td>
+<td style="text-align: left">A type.</td>
+<td style="text-align: left"><code>P&lt;Ty&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code>tok</code></td>
+<td style="text-align: left">A single token.</td>
+<td style="text-align: left"><code>Spanned&lt;Token&gt;</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><code>tt</code></td>
+<td style="text-align: left">A single token tree.</td>
+<td style="text-align: left"><code>TokenTree</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>In addition to the specifiers above, there is also a specifier for each <a href="extractor/index.html"><code>extractor</code></a>
+function. For example, the specifier for the
+<a href="extractor/fn.lit_to_str.html"><code>extractor::lit_to_str</code></a> function is <code>lit_str</code>. The storage type
+for these specifiers is the return type of the corresponding <a href="extractor/index.html"><code>extractor</code></a> function.
+For example, the storage type of the <code>lit_str</code> specifier is <code>(String, StrStyle)</code>.</p>
+
+<h2 id='sequences' class='section-header'><a href='#sequences'>Sequences</a></h2>
+<p>Plugin argument specifications support sequences that are very similar to the sequences in macro
+argument specifications. For example, the following plugin argument specification matches zero
+or more comma-separated parenthesized binary expressions.</p>
+
+<pre class='rust rust-example-rendered'>
+$((<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>left</span>:<span class='ident'>ident</span> <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>operator</span>:<span class='ident'>binop</span> <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>right</span>:<span class='ident'>ident</span>)), <span class='op'>*</span><a class='test-arrow' target='_blank' href=''>Run</a></pre>
+
+<p>In addition to the <code>*</code> and <code>+</code> sequence operators, there is also a <code>?</code> operator which allows for
+sequences with either zero or one repetitions. This operator does not support separators.  For
+example, the following plugin argument specification can match either a binary expression or
+nothing at all.</p>
+
+<pre class='rust rust-example-rendered'>
+$(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>left</span>:<span class='ident'>ident</span> <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>operator</span>:<span class='ident'>binop</span> <span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>right</span>:<span class='ident'>ident</span>)?<a class='test-arrow' target='_blank' href=''>Run</a></pre>
+
+<p>Named specifiers that occur in sequences cannot be stored directly as their storage type because
+there may be more than one or none at all. For this reason, named specifiers that occur in
+sequences have the storage type of either <code>Vec&lt;$type&gt;</code> or <code>Option&lt;$type&gt;</code> where <code>$type</code> is the
+base storage type. <code>Vec&lt;$type&gt;</code> is used for <code>*</code> and <code>+</code> sequences and <code>Option&lt;$type&gt;</code> is used
+for <code>?</code> sequences.</p>
+
+<p>An additional level of <code>Vec</code> is added for each sequence level. For example, in the plugin
+argument specification below, <code>$b:ident</code> occurs two sequences deep. The storage type for <code>b</code> in
+this case would be <code>Vec&lt;Vec&lt;syntax::ast::Ident&gt;&gt;</code>.</p>
+
+<pre class='rust rust-example-rendered'>
+$(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>a</span>:<span class='ident'>ident</span> $(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>b</span>:<span class='ident'>ident</span>)<span class='op'>*</span>)<span class='op'>*</span><a class='test-arrow' target='_blank' href=''>Run</a></pre>
+
+<h2 id='named-sequences' class='section-header'><a href='#named-sequences'>Named Sequences</a></h2>
+<p>There are also named sequences, which behave rather differently than regular sequences. Named
+sequences cannot contain named specifiers and instead consist of specific token trees that you
+wish to be counted. For example, the following plugin argument specification will match
+either <code>pub struct { }</code> or just <code>struct { }</code>.</p>
+
+<pre class='rust rust-example-rendered'>
+<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>public</span>:(<span class='kw'>pub</span>)? <span class='kw'>struct</span> { }<a class='test-arrow' target='_blank' href=''>Run</a></pre>
+
+<p>These named sequences allow the usage of the same suffixes as regular sequences. The <code>*</code>, <code>+</code>,
+and <code>?</code> operators are supported and separators are supported for the <code>*</code> and <code>+</code> operators. For
+example, the following plugin argument specification matches any number of comma-separated <code>A</code>s.</p>
+
+<pre class='rust rust-example-rendered'>
+<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>a</span>:(<span class='ident'>A</span>), <span class='op'>*</span><a class='test-arrow' target='_blank' href=''>Run</a></pre>
+
+<p>Because named sequences are counted, the storage types are simply <code>usize</code> for <code>*</code> and <code>+</code> named
+sequences and <code>bool</code> for <code>?</code>named sequences.</p>
+
+<h2 id='enums' class='section-header'><a href='#enums'>Enums</a></h2>
+<p>There are also enumerated specifiers, which allow for a choice of possible values. For example,
+the following plugin argument specification will match either an identifier or a meta item.</p>
+
+<pre class='rust rust-example-rendered'>
+<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>e</span>:{<span class='ident'>A</span>(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>a</span>:<span class='ident'>ident</span>), <span class='ident'>B</span>(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>b</span>:<span class='ident'>meta</span>)}<a class='test-arrow' target='_blank' href=''>Run</a></pre>
+
+<p>The storage types for enumerated specifiers are generated enums. For example, the storage type
+for <code>e</code> above would be the following enum.</p>
+
+<pre class='rust rust-example-rendered'>
+<span class='attribute'>#[<span class='ident'>derive</span>(<span class='ident'>Debug</span>)]</span>
+<span class='kw'>enum</span> <span class='ident'>e_Enum</span> {
+    <span class='ident'>A</span> { <span class='ident'>a</span>: <span class='ident'>Spanned</span><span class='op'>&lt;</span><span class='ident'>Ident</span><span class='op'>&gt;</span> },
+    <span class='ident'>B</span> { <span class='ident'>b</span>: <span class='ident'>P</span><span class='op'>&lt;</span><span class='ident'>MetaItem</span><span class='op'>&gt;</span> },
+}<a class='test-arrow' target='_blank' href=''>Run</a></pre>
+</div><h2 id='reexports' class='section-header'><a href="#reexports">Reexports</a></h2>
+<table><tr><td><code>pub use parsers::<a class='mod' href='../easy_plugin_parsers/arguments/index.html' title='easy_plugin_parsers::arguments'>arguments</a>::*;</code></td></tr><tr><td><code>pub use parsers::<a class='mod' href='../easy_plugin_parsers/specification/index.html' title='easy_plugin_parsers::specification'>specification</a>::*;</code></td></tr></table><h2 id='modules' class='section-header'><a href="#modules">Modules</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='mod' href='extractor/index.html'
+                                  title='easy_plugin::extractor'>extractor</a></td>
+                           <td class='docblock-short'>
+                                <p>Functions for extracting the values in AST entities.</p>
+                           </td>
+                       </tr></table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='trait' href='trait.PluginResultExt.html'
+                                  title='easy_plugin::PluginResultExt'>PluginResultExt</a></td>
+                           <td class='docblock-short'>
+                                <p>Extends <code>PluginResult&lt;T&gt;</code>.</p>
+                           </td>
+                       </tr>
+                       <tr class=' module-item'>
+                           <td><a class='trait' href='trait.ToError.html'
+                                  title='easy_plugin::ToError'>ToError</a></td>
+                           <td class='docblock-short'>
+                                <p>A type that can be extended into a <code>PluginResult&lt;T&gt;</code>.</p>
+                           </td>
+                       </tr></table><h2 id='types' class='section-header'><a href="#types">Type Definitions</a></h2>
+<table>
+                       <tr class=' module-item'>
+                           <td><a class='type' href='type.PluginResult.html'
+                                  title='easy_plugin::PluginResult'>PluginResult</a></td>
+                           <td class='docblock-short'>
+                                
+                           </td>
+                       </tr></table></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                    <dt>+</dt>
+                    <dd>Collapse/expand all sections</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "easy_plugin";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script defer src="../search-index.js"></script>
+</body>
+</html>
